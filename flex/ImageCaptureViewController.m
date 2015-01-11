@@ -14,7 +14,6 @@
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *preview;
 @property (nonatomic, strong) dispatch_queue_t serialQueue;
 
-
 @end
 
 @implementation ImageCaptureViewController
@@ -24,6 +23,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(captureStarted) name:AVCaptureSessionDidStartRunningNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(captureError) name:AVCaptureSessionErrorKey object:nil];
     
+    self.context = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).managedObjectContext;
     
     //configure camera input
     NSArray *devices = [AVCaptureDevice devices];
