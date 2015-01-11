@@ -7,6 +7,8 @@
 //
 
 #import "HistoryTableViewController.h"
+#import "FlexProduct.h"
+#import "AppDelegate.h"
 
 @interface HistoryTableViewController ()
 
@@ -17,30 +19,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.context = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).managedObjectContext;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidAppear:(BOOL)animated {
+    self.products = [self fetchAllProducts];
+    [super viewDidAppear:animated];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return 1;
+    return self.products.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FlexCell" forIndexPath:indexPath];
     
-    cell.textLabel.text = @"Prototype";
+    cell.textLabel.text = [self.products[indexPath.row] upc];
     
     return cell;
 }
@@ -88,5 +86,14 @@
     // Pass the selected object to the new view controller.
 }
 
+#pragma mark - Fetch Request methods
+
+- (NSArray *)fetchAllProducts {
+    NSError *error;
+    NSEntityDescription *nsed = [NSEntityDescription entityForName:@"FlexProduct" inManagedObjectContext:self.context];
+    NSFetchRequest *request = [NSFetchRequest new];
+    [request setEntity:nsed];
+    return [self.context executeFetchRequest:request error:&error];
+}
 
 @end

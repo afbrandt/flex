@@ -10,4 +10,7 @@
 
 @interface HistoryTableViewController : UITableViewController
 
+@property (nonatomic, strong) NSArray *products;
+@property (nonatomic, strong) NSManagedObjectContext *context;
+
 @end
