@@ -86,7 +86,7 @@
         }
     }
     
-    NSLog(upc);
+    NSLog(@"%@",upc);
 }
 
 @end
