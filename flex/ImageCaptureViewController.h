@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
-@interface ImageCaptureViewController : UIViewController
+@interface ImageCaptureViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate>
 
 @end

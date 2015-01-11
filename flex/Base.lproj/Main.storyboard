@@ -23,7 +23,6 @@
                                 </state>
                                 <connections>
                                     <action selector="startImageCapture:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Tf-aa-VRc"/>
-                                    <action selector="startScanItem:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vcs-hg-wF2"/>
                                 </connections>
                             </button>
                         </subviews>
