@@ -7,6 +7,7 @@
 //
 
 #import "HistoryTableViewController.h"
+#import "ProductDetailViewController.h"
 #import "FlexProduct.h"
 #import "AppDelegate.h"
 
@@ -80,10 +81,10 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    ProductDetailViewController *controller = [segue destinationViewController];
+    NSIndexPath *path = self.tableView.indexPathForSelectedRow;
+    controller.product = self.products[path.row];
 }
 
 #pragma mark - Fetch Request methods

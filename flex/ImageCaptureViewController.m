@@ -7,7 +7,7 @@
 //
 
 #import "ImageCaptureViewController.h"
-#import "FlexProduct.h"
+#import "ProductHelper.h"
 
 @interface ImageCaptureViewController ()
 
@@ -92,17 +92,13 @@
     
     NSLog(@"%@",upc);
     
-    FlexProduct *product = [FlexProduct createInstanceFromManagedContext:self.context];
-    NSError *error;
-    
-    [product setUpc:upc];
-    [self.context save:&error];
+    [[ProductHelper sharedHelper] processUPC:upc];
     
     //needs transition
     self.tabBarController.selectedIndex = 1;
     [self.preview removeFromSuperlayer];
     
-#pragma TODO - create transition, save object
+#pragma TODO - create transition
 }
 
 @end

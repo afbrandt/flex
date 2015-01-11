@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class FlexProduct;
 
 @interface ProductDetailViewController : UIViewController
+
+@property (nonatomic, strong) FlexProduct *product;
 
 @end

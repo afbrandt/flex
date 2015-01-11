@@ -14,4 +14,8 @@
 
 @implementation ProductDetailViewController
 
+- (void)viewDidLoad {
+    
+}
+
 @end

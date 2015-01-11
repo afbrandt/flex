@@ -17,6 +17,7 @@
 		496D42371A621BE10095E58D /* HistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D42361A621BE10095E58D /* HistoryTableViewController.m */; };
 		49B159621A632CC9004500E7 /* flex.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49B159601A632CC9004500E7 /* flex.xcdatamodeld */; };
 		49B159651A632E3B004500E7 /* FlexProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B159641A632E3B004500E7 /* FlexProduct.m */; };
+		49B159681A633E30004500E7 /* ProductHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B159671A633E30004500E7 /* ProductHelper.m */; };
 		49E0FD0B1A63220500536F8E /* ProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E0FD0A1A63220500536F8E /* ProductDetailViewController.m */; };
 		E73CBBC1AFC54D3E6E06EA40 /* libPods-flex.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 487A4FD4B408075C690D1454 /* libPods-flex.a */; };
 /* End PBXBuildFile section */
@@ -51,6 +52,8 @@
 		49B159611A632CC9004500E7 /* flex.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = flex.xcdatamodel; sourceTree = "<group>"; };
 		49B159631A632E3B004500E7 /* FlexProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexProduct.h; sourceTree = "<group>"; };
 		49B159641A632E3B004500E7 /* FlexProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexProduct.m; sourceTree = "<group>"; };
+		49B159661A633E30004500E7 /* ProductHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductHelper.h; sourceTree = "<group>"; };
+		49B159671A633E30004500E7 /* ProductHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductHelper.m; sourceTree = "<group>"; };
 		49E0FD091A63220500536F8E /* ProductDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailViewController.h; sourceTree = "<group>"; };
 		49E0FD0A1A63220500536F8E /* ProductDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailViewController.m; sourceTree = "<group>"; };
 		948A5B46C98491B968E33F15 /* Pods-flex.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-flex.debug.xcconfig"; path = "Pods/Target Support Files/Pods-flex/Pods-flex.debug.xcconfig"; sourceTree = "<group>"; };
@@ -112,6 +115,8 @@
 				496D42111A6218E70095E58D /* AppDelegate.m */,
 				496D42321A621B5E0095E58D /* ImageCaptureViewController.h */,
 				496D42331A621B5E0095E58D /* ImageCaptureViewController.m */,
+				49B159661A633E30004500E7 /* ProductHelper.h */,
+				49B159671A633E30004500E7 /* ProductHelper.m */,
 				496D42161A6218E70095E58D /* Main.storyboard */,
 				496D42351A621BE10095E58D /* HistoryTableViewController.h */,
 				496D42361A621BE10095E58D /* HistoryTableViewController.m */,
@@ -299,6 +304,7 @@
 				496D42371A621BE10095E58D /* HistoryTableViewController.m in Sources */,
 				49E0FD0B1A63220500536F8E /* ProductDetailViewController.m in Sources */,
 				496D42341A621B5E0095E58D /* ImageCaptureViewController.m in Sources */,
+				49B159681A633E30004500E7 /* ProductHelper.m in Sources */,
 				496D42121A6218E70095E58D /* AppDelegate.m in Sources */,
 				496D420F1A6218E70095E58D /* main.m in Sources */,
 				49B159651A632E3B004500E7 /* FlexProduct.m in Sources */,
