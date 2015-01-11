@@ -74,6 +74,8 @@
     NSLog(@"capture error");
 }
 
+#pragma mark - AVCaptureMetadataOutputObjectsDelegate method
+
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection {
     NSLog(@"Received metadata!");
     
@@ -82,11 +84,17 @@
     for (AVMetadataObject *metadata in metadataObjects) {
         if ([metadata.type isEqualToString:AVMetadataObjectTypeEAN13Code]) {
             upc = [(AVMetadataMachineReadableCodeObject *)metadata stringValue];
+            [self.captureSession stopRunning];
             break;
         }
     }
     
     NSLog(@"%@",upc);
+    
+    //needs transition
+    self.tabBarController.selectedIndex = 1;
+    
+#pragma TODO - create transition, save object
 }
 
 @end
