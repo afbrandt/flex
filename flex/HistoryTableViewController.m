@@ -8,6 +8,7 @@
 
 #import "HistoryTableViewController.h"
 #import "ProductDetailViewController.h"
+#import "FlexProductTableViewCell.h"
 #import "FlexProduct.h"
 #import "AppDelegate.h"
 
@@ -19,6 +20,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UINib *nib = [UINib nibWithNibName:@"FlexProductTableViewCell" bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"FlexProductCell"];
     
     self.context = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).managedObjectContext;
 }
@@ -37,9 +41,13 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FlexCell" forIndexPath:indexPath];
+    FlexProductTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FlexCell" forIndexPath:indexPath];
     
-    cell.textLabel.text = [self.products[indexPath.row] upc];
+    cell.productLabel.text = [self.products[indexPath.row] itemName];
+    cell.brandLabel.text = [self.products[indexPath.row] itemBrand];
+    cell.productImage.image = [UIImage imageWithContentsOfFile:[self.products[indexPath.row] imageUrl]];
+    
+    //cell.textLabel.text = [self.products[indexPath.row] upc];
     
     return cell;
 }
@@ -63,21 +71,6 @@
     }   
 }
 */
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 
 #pragma mark - Navigation
 

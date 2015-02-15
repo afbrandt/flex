@@ -3,9 +3,10 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6213"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Scan-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ImageCaptureViewController" sceneMemberID="viewController">
@@ -26,14 +27,22 @@
                                     <action selector="startImageCapture:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Tf-aa-VRc"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xEW-Ml-ap5">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Flex" id="G8V-k8-B0s"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="xEW-Ml-ap5" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="9qb-k3-Ud7"/>
+                            <constraint firstAttribute="centerX" secondItem="xEW-Ml-ap5" secondAttribute="centerX" id="O1k-8R-0re"/>
                             <constraint firstAttribute="centerY" secondItem="51F-k0-7lr" secondAttribute="centerY" id="mBs-Ou-icV"/>
                             <constraint firstAttribute="centerX" secondItem="51F-k0-7lr" secondAttribute="centerX" id="xlp-t0-nPd"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="KcF-Gk-k25"/>
+                    <tabBarItem key="tabBarItem" title="Scan" id="KcF-Gk-k25"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -107,11 +116,11 @@
             </objects>
             <point key="canvasLocation" x="305" y="349"/>
         </scene>
-        <!--Item-->
+        <!--History-->
         <scene sceneID="fI3-29-WWO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JWI-vk-JS7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="xoB-GG-2he"/>
+                    <tabBarItem key="tabBarItem" title="History" id="xoB-GG-2he"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="n0V-55-fJ1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

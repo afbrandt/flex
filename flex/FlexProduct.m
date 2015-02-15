@@ -8,10 +8,10 @@
 
 #import "FlexProduct.h"
 
-
 @implementation FlexProduct
 
 @dynamic upc;
+@dynamic imageUrl;
 @dynamic itemName;
 @dynamic itemBrand;
 @dynamic itemDescription;

@@ -21,7 +21,8 @@
 
 static ProductHelper *helper;
 
-static NSString const* URL_BASE = @"http://api.upcdatabase.org/json";
+//static NSString const* URL_BASE = @"http://api.upcdatabase.org/json";
+static NSString const* URL_BASE = @"http://localhost:3000/v1/product/";
 
 - (instancetype)init {
     self = [super init];
@@ -38,7 +39,8 @@ static NSString const* URL_BASE = @"http://api.upcdatabase.org/json";
     FlexProduct *product = [FlexProduct createInstanceFromManagedContext:self.context];
     NSError *error;
     
-    NSString *url = [NSString stringWithFormat:@"%@/e211badfdf61541535d3e7c4e8d4d2f6/%@", URL_BASE, upcString];
+    //NSString *url = [NSString stringWithFormat:@"%@/e211badfdf61541535d3e7c4e8d4d2f6/%@", URL_BASE, upcString];
+    NSString *url = [NSString stringWithFormat:@"%@/%@", URL_BASE, upcString];
     
     [self.manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"json: %@", responseObject);

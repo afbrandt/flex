@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49078EF01A90647B003AACDE /* FlexProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49078EEE1A90647B003AACDE /* FlexProductTableViewCell.m */; };
+		49078EF11A90647B003AACDE /* FlexProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49078EEF1A90647B003AACDE /* FlexProductTableViewCell.xib */; };
 		496D420F1A6218E70095E58D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D420E1A6218E70095E58D /* main.m */; };
 		496D42121A6218E70095E58D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D42111A6218E70095E58D /* AppDelegate.m */; };
 		496D42181A6218E70095E58D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 496D42161A6218E70095E58D /* Main.storyboard */; };
@@ -34,6 +36,9 @@
 
 /* Begin PBXFileReference section */
 		487A4FD4B408075C690D1454 /* libPods-flex.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-flex.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49078EED1A90647B003AACDE /* FlexProductTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexProductTableViewCell.h; sourceTree = "<group>"; };
+		49078EEE1A90647B003AACDE /* FlexProductTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexProductTableViewCell.m; sourceTree = "<group>"; };
+		49078EEF1A90647B003AACDE /* FlexProductTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlexProductTableViewCell.xib; sourceTree = "<group>"; };
 		496D42091A6218E70095E58D /* flex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = flex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		496D420D1A6218E70095E58D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		496D420E1A6218E70095E58D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -127,6 +132,9 @@
 				49B159601A632CC9004500E7 /* flex.xcdatamodeld */,
 				49B159631A632E3B004500E7 /* FlexProduct.h */,
 				49B159641A632E3B004500E7 /* FlexProduct.m */,
+				49078EED1A90647B003AACDE /* FlexProductTableViewCell.h */,
+				49078EEE1A90647B003AACDE /* FlexProductTableViewCell.m */,
+				49078EEF1A90647B003AACDE /* FlexProductTableViewCell.xib */,
 				496D420C1A6218E70095E58D /* Supporting Files */,
 			);
 			path = flex;
@@ -248,6 +256,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49078EF11A90647B003AACDE /* FlexProductTableViewCell.xib in Resources */,
 				496D42181A6218E70095E58D /* Main.storyboard in Resources */,
 				496D421D1A6218E70095E58D /* LaunchScreen.xib in Resources */,
 				496D421A1A6218E70095E58D /* Images.xcassets in Resources */,
@@ -303,6 +312,7 @@
 			files = (
 				496D42371A621BE10095E58D /* HistoryTableViewController.m in Sources */,
 				49E0FD0B1A63220500536F8E /* ProductDetailViewController.m in Sources */,
+				49078EF01A90647B003AACDE /* FlexProductTableViewCell.m in Sources */,
 				496D42341A621B5E0095E58D /* ImageCaptureViewController.m in Sources */,
 				49B159681A633E30004500E7 /* ProductHelper.m in Sources */,
 				496D42121A6218E70095E58D /* AppDelegate.m in Sources */,
