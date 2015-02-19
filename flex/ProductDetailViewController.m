@@ -7,6 +7,7 @@
 //
 
 #import "ProductDetailViewController.h"
+#import "FlexProduct.h"
 
 @interface ProductDetailViewController ()
 
@@ -20,6 +21,8 @@
 @implementation ProductDetailViewController
 
 - (void)viewDidLoad {
+
+    self.productImage.image = [UIImage imageWithContentsOfFile:[self.product imagePath]];
     
 }
 

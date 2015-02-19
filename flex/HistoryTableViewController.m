@@ -39,9 +39,12 @@
     return self.products.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 91.0f;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    FlexProductTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FlexCell" forIndexPath:indexPath];
+    FlexProductTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FlexProductCell" forIndexPath:indexPath];
     
     NSString *nameString = [self.products[indexPath.row] itemName];
     if (nameString) {
@@ -53,11 +56,12 @@
         cell.brandLabel.text = brandString;
     }
     
-    NSString *imagePath = [self.products[indexPath.row] imageUrl];
-    if (imagePath) {
-        cell.productImage.image = [UIImage imageWithContentsOfFile:imagePath];
+    NSString *imagePathString = [self.products[indexPath.row] imagePath];
+    if (imagePathString) {
+        cell.productImage.image = [UIImage imageNamed:imagePathString];
     }
     
+    //cell.product = self.products[indexPath.row];
     //cell.textLabel.text = [self.products[indexPath.row] upc];
     
     return cell;
@@ -65,10 +69,16 @@
 
 #pragma mark - Navigation
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"ShowProductDetail" sender:self];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    ProductDetailViewController *controller = [segue destinationViewController];
-    NSIndexPath *path = self.tableView.indexPathForSelectedRow;
-    controller.product = self.products[path.row];
+    if ([segue.identifier isEqualToString:@"ShowProductDetail"]) {
+        ProductDetailViewController *controller = [segue destinationViewController];
+        NSIndexPath *path = self.tableView.indexPathForSelectedRow;
+        controller.product = self.products[path.row];
+    }
 }
 
 #pragma mark - Fetch Request methods

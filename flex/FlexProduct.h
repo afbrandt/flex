@@ -14,6 +14,7 @@
 
 @property (nonatomic, retain) NSString * upc;
 @property (nonatomic, retain) NSString * imageUrl;
+@property (nonatomic, retain) NSString * imagePath;
 @property (nonatomic, retain) NSString * itemName;
 @property (nonatomic, retain) NSString * itemBrand;
 @property (nonatomic, retain) NSString * itemDescription;

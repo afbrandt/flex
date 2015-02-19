@@ -39,19 +39,53 @@ static NSString const* PRODUCT_ENDPOINT_V1 = @"v1/product";
 
 - (void)processUPC:(NSString *)upcString {
     FlexProduct *product = [FlexProduct createInstanceFromManagedContext:self.context];
-    
+    self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
     //NSString *url = [NSString stringWithFormat:@"%@/e211badfdf61541535d3e7c4e8d4d2f6/%@", URL_BASE, upcString];
     NSString *url = [NSString stringWithFormat:@"%@/%@/%@", URL_BASE, PRODUCT_ENDPOINT_V1, upcString];
     
     [self.manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"json: %@", responseObject);
         NSError *error;
-
+        NSDictionary *json = (NSDictionary *)responseObject;
+        
         [product setUpc:upcString];
+        [product setImageUrl:json[@"imgURL"]];
+        
+        
         [self.context save:&error];
+        [self getImageForProduct: product];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error");
     }];
+}
+
+- (void)getImageForProduct:(FlexProduct *)product {
+    NSString *url = [product imageUrl];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    op.responseSerializer = [AFImageResponseSerializer serializer];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray *tokens = [url componentsSeparatedByString:@"/"];
+    NSString *token = tokens[tokens.count-1];
+    token = [[token componentsSeparatedByCharactersInSet:[NSCharacterSet illegalCharacterSet]] componentsJoinedByString:@""];
+    __block NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:token];
+    
+    
+    op.outputStream = [NSOutputStream outputStreamToFileAtPath:path append:NO];
+    NSLog(@"%@",tokens[tokens.count-1]);
+    
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSError *error;
+        [product setImagePath:path];
+        [self.context save:&error];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        //do something
+    }];
+    
+    [op start];
 }
 
 + (instancetype)sharedHelper {

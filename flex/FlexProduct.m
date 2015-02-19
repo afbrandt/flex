@@ -12,6 +12,7 @@
 
 @dynamic upc;
 @dynamic imageUrl;
+@dynamic imagePath;
 @dynamic itemName;
 @dynamic itemBrand;
 @dynamic itemDescription;
