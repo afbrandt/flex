@@ -21,8 +21,10 @@
 
 static ProductHelper *helper;
 
-//static NSString const* URL_BASE = @"http://api.upcdatabase.org/json";
-static NSString const* URL_BASE = @"http://localhost:3000/v1/product/";
+static NSString const* EXTERNAL_URL_BASE = @"http://api.upcdatabase.org/json";
+static NSString const* URL_BASE = @"http://10.2.14.247:3000";
+//static NSString const* URL_BASE = @"http://flex-server-001.herokuapp.com";
+static NSString const* PRODUCT_ENDPOINT_V1 = @"v1/product";
 
 - (instancetype)init {
     self = [super init];
@@ -37,19 +39,19 @@ static NSString const* URL_BASE = @"http://localhost:3000/v1/product/";
 
 - (void)processUPC:(NSString *)upcString {
     FlexProduct *product = [FlexProduct createInstanceFromManagedContext:self.context];
-    NSError *error;
     
     //NSString *url = [NSString stringWithFormat:@"%@/e211badfdf61541535d3e7c4e8d4d2f6/%@", URL_BASE, upcString];
-    NSString *url = [NSString stringWithFormat:@"%@/%@", URL_BASE, upcString];
+    NSString *url = [NSString stringWithFormat:@"%@/%@/%@", URL_BASE, PRODUCT_ENDPOINT_V1, upcString];
     
     [self.manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"json: %@", responseObject);
+        NSError *error;
+
+        [product setUpc:upcString];
+        [self.context save:&error];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error");
     }];
-    
-    [product setUpc:upcString];
-    [self.context save:&error];
 }
 
 + (instancetype)sharedHelper {

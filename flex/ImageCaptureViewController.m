@@ -9,7 +9,7 @@
 #import "ImageCaptureViewController.h"
 #import "ProductHelper.h"
 
-@interface ImageCaptureViewController ()
+@interface ImageCaptureViewController () <AVCaptureMetadataOutputObjectsDelegate>
 
 @property (nonatomic, strong) AVCaptureSession *captureSession;
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *preview;
@@ -91,6 +91,10 @@
     }
     
     NSLog(@"%@",upc);
+    //have to trim first character in upc
+    NSRange range = NSMakeRange(0, 1);
+    upc = [upc stringByReplacingCharactersInRange:range withString:@""];
+    NSLog(@"trimmed upc: %@", upc);
     
     [[ProductHelper sharedHelper] processUPC:upc];
     

@@ -17,6 +17,7 @@
 		496D42291A6218E70095E58D /* flexTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D42281A6218E70095E58D /* flexTests.m */; };
 		496D42341A621B5E0095E58D /* ImageCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D42331A621B5E0095E58D /* ImageCaptureViewController.m */; };
 		496D42371A621BE10095E58D /* HistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D42361A621BE10095E58D /* HistoryTableViewController.m */; };
+		497DE7761A945E3700A2A195 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 497DE7751A945E3700A2A195 /* SearchTableViewController.m */; };
 		49B159621A632CC9004500E7 /* flex.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49B159601A632CC9004500E7 /* flex.xcdatamodeld */; };
 		49B159651A632E3B004500E7 /* FlexProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B159641A632E3B004500E7 /* FlexProduct.m */; };
 		49B159681A633E30004500E7 /* ProductHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B159671A633E30004500E7 /* ProductHelper.m */; };
@@ -54,6 +55,8 @@
 		496D42331A621B5E0095E58D /* ImageCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCaptureViewController.m; sourceTree = "<group>"; };
 		496D42351A621BE10095E58D /* HistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewController.h; sourceTree = "<group>"; };
 		496D42361A621BE10095E58D /* HistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewController.m; sourceTree = "<group>"; };
+		497DE7741A945E3700A2A195 /* SearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewController.h; sourceTree = "<group>"; };
+		497DE7751A945E3700A2A195 /* SearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewController.m; sourceTree = "<group>"; };
 		49B159611A632CC9004500E7 /* flex.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = flex.xcdatamodel; sourceTree = "<group>"; };
 		49B159631A632E3B004500E7 /* FlexProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexProduct.h; sourceTree = "<group>"; };
 		49B159641A632E3B004500E7 /* FlexProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexProduct.m; sourceTree = "<group>"; };
@@ -123,6 +126,8 @@
 				49B159661A633E30004500E7 /* ProductHelper.h */,
 				49B159671A633E30004500E7 /* ProductHelper.m */,
 				496D42161A6218E70095E58D /* Main.storyboard */,
+				497DE7741A945E3700A2A195 /* SearchTableViewController.h */,
+				497DE7751A945E3700A2A195 /* SearchTableViewController.m */,
 				496D42351A621BE10095E58D /* HistoryTableViewController.h */,
 				496D42361A621BE10095E58D /* HistoryTableViewController.m */,
 				49E0FD091A63220500536F8E /* ProductDetailViewController.h */,
@@ -313,6 +318,7 @@
 				496D42371A621BE10095E58D /* HistoryTableViewController.m in Sources */,
 				49E0FD0B1A63220500536F8E /* ProductDetailViewController.m in Sources */,
 				49078EF01A90647B003AACDE /* FlexProductTableViewCell.m in Sources */,
+				497DE7761A945E3700A2A195 /* SearchTableViewController.m in Sources */,
 				496D42341A621B5E0095E58D /* ImageCaptureViewController.m in Sources */,
 				49B159681A633E30004500E7 /* ProductHelper.m in Sources */,
 				496D42121A6218E70095E58D /* AppDelegate.m in Sources */,
@@ -444,7 +450,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = flex/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -456,7 +462,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = flex/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

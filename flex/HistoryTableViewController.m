@@ -43,34 +43,25 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FlexProductTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FlexCell" forIndexPath:indexPath];
     
-    cell.productLabel.text = [self.products[indexPath.row] itemName];
-    cell.brandLabel.text = [self.products[indexPath.row] itemBrand];
-    cell.productImage.image = [UIImage imageWithContentsOfFile:[self.products[indexPath.row] imageUrl]];
+    NSString *nameString = [self.products[indexPath.row] itemName];
+    if (nameString) {
+        cell.productLabel.text = nameString;
+    }
+    
+    NSString *brandString = [self.products[indexPath.row] itemBrand];
+    if (brandString) {
+        cell.brandLabel.text = brandString;
+    }
+    
+    NSString *imagePath = [self.products[indexPath.row] imageUrl];
+    if (imagePath) {
+        cell.productImage.image = [UIImage imageWithContentsOfFile:imagePath];
+    }
     
     //cell.textLabel.text = [self.products[indexPath.row] upc];
     
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
 
 #pragma mark - Navigation
 

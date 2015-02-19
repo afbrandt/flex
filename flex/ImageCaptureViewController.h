@@ -10,7 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "AppDelegate.h"
 
-@interface ImageCaptureViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate>
+@interface ImageCaptureViewController : UIViewController 
 
 @property (nonatomic, strong) NSManagedObjectContext *context;
 
