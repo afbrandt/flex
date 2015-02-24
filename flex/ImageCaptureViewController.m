@@ -7,6 +7,7 @@
 //
 
 #import "ImageCaptureViewController.h"
+#import "HistoryTableViewController.h"
 #import "ProductHelper.h"
 
 @interface ImageCaptureViewController () <AVCaptureMetadataOutputObjectsDelegate>
@@ -95,14 +96,22 @@
     NSRange range = NSMakeRange(0, 1);
     upc = [upc stringByReplacingCharactersInRange:range withString:@""];
     NSLog(@"trimmed upc: %@", upc);
+
+    ProductHelper *helper = [ProductHelper sharedHelper];
+    [helper processUPC:upc];
+    helper.hasNewProduct = YES;
     
-    [[ProductHelper sharedHelper] processUPC:upc];
+    UIView *from = self.tabBarController.selectedViewController.view;
+    UIView *to = ((UIViewController *)self.tabBarController.viewControllers[1]).view;
     
-    //needs transition
-    self.tabBarController.selectedIndex = 1;
-    [self.preview removeFromSuperlayer];
-    
-#pragma TODO - create transition
+    [UIView transitionFromView:from toView:to duration:0.5f options:UIViewAnimationOptionTransitionFlipFromRight completion:^(BOOL finished) {
+        if (finished) {
+            self.tabBarController.selectedIndex = 1;
+            [self.preview removeFromSuperlayer];
+        }
+    }];
 }
+
+
 
 @end

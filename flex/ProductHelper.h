@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+@class FlexProduct;
 
 @interface ProductHelper : NSObject
 
 @property (nonatomic, strong) NSManagedObjectContext *context;
+@property (nonatomic, strong) FlexProduct *latestProduct;
+@property (nonatomic, assign) BOOL hasNewProduct;
 
 + (instancetype)sharedHelper;
 

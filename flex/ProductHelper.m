@@ -38,7 +38,7 @@ static NSString const* PRODUCT_ENDPOINT_V1 = @"v1/product";
 }
 
 - (void)processUPC:(NSString *)upcString {
-    FlexProduct *product = [FlexProduct createInstanceFromManagedContext:self.context];
+    self.latestProduct = [FlexProduct createInstanceFromManagedContext:self.context];
     self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
     //NSString *url = [NSString stringWithFormat:@"%@/e211badfdf61541535d3e7c4e8d4d2f6/%@", URL_BASE, upcString];
     NSString *url = [NSString stringWithFormat:@"%@/%@/%@", URL_BASE, PRODUCT_ENDPOINT_V1, upcString];
@@ -48,12 +48,14 @@ static NSString const* PRODUCT_ENDPOINT_V1 = @"v1/product";
         NSError *error;
         NSDictionary *json = (NSDictionary *)responseObject;
         
-        [product setUpc:upcString];
-        [product setImageUrl:json[@"imgURL"]];
-        
+        [self.latestProduct setUpc:upcString];
+        [self.latestProduct setImageUrl:json[@"imgURL"]];
+        [self.latestProduct setItemName:json[@"name"]];
+        [self.latestProduct setItemBrand:json[@"brand"]];
+        [self.latestProduct setItemDescription:@"description"];
         
         [self.context save:&error];
-        [self getImageForProduct: product];
+        [self getImageForProduct: self.latestProduct];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error");

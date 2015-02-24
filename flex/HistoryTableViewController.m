@@ -10,9 +10,13 @@
 #import "ProductDetailViewController.h"
 #import "FlexProductTableViewCell.h"
 #import "FlexProduct.h"
+#import "ProductHelper.h"
 #import "AppDelegate.h"
 
 @interface HistoryTableViewController ()
+
+@property (nonatomic, assign) BOOL didFetchProducts;
+@property (nonatomic, weak) ProductHelper *helper;
 
 @end
 
@@ -23,14 +27,33 @@
     
     UINib *nib = [UINib nibWithNibName:@"FlexProductTableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"FlexProductCell"];
+    self.helper = [ProductHelper sharedHelper];
     
     self.context = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).managedObjectContext;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    self.products = [self fetchAllProducts];
     [super viewDidAppear:animated];
+
+    NSMutableArray *all = [[self fetchAllProducts] mutableCopy];
+    NSLog(@"array has %ld objects", [all count]);
+    if (self.helper.hasNewProduct) {
+        [all removeObject:[ProductHelper sharedHelper].latestProduct];
+        self.helper.hasNewProduct = NO;
+        [self performSelector:@selector(animateNewCell) withObject:nil afterDelay:0.1f];
+    }
+    NSLog(@"array has %ld objects", [all count]);
+    
+    self.products = all;
     [self.tableView reloadData];
+    
+}
+
+- (void)animateNewCell {
+    self.products = [self.products arrayByAddingObject:[ProductHelper sharedHelper].latestProduct];
+    NSIndexPath *index = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:index] withRowAnimation:UITableViewRowAnimationLeft];
+    //[self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -88,6 +111,7 @@
     NSEntityDescription *nsed = [NSEntityDescription entityForName:@"FlexProduct" inManagedObjectContext:self.context];
     NSFetchRequest *request = [NSFetchRequest new];
     [request setEntity:nsed];
+    self.didFetchProducts = YES;
     return [self.context executeFetchRequest:request error:&error];
 }
 

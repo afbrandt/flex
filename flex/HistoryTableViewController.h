@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) NSArray *products;
 @property (nonatomic, strong) NSManagedObjectContext *context;
+@property (nonatomic, assign) BOOL didCreateProduct;
 
 @end
